@@ -25,7 +25,6 @@ class Task(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField(choices=COMPLETION_CHOICES, default=False)
     is_delete = models.BooleanField(default=False)
-    order = models.PositiveIntegerField(default=0)
 
     objects = TaskManager()
     admin_objects = models.Manager()    
@@ -36,3 +35,4 @@ class Task(models.Model):
 
     class Meta:
         verbose_name = 'Task'
+        ordering = ['status', 'priority', 'created_at']

@@ -8,7 +8,7 @@ from django.db.models import F
 
 def index(request):
 
-    queryset = Task.objects.order_by('priority', 'created_at', '-status')
+    queryset = Task.objects.all()
 
     context = {'queryset': queryset}
 
@@ -43,10 +43,10 @@ def view_tasks(request, id):
 
 def update_task(request, id):
     if request.method == 'POST':
+
         task = Task.objects.get(id=id)
         
-        task.order = Task.objects.count()
-        task.status = not task.status  # Toggle the status
+        task.status = True  # Toggle the status
         task.save()
 
     return redirect('home')
@@ -54,8 +54,9 @@ def update_task(request, id):
 def delete_task(request, id):
     
     if request.method == 'POST':
-        task = Task.objects.filter(id=id)
+        task = Task.objects.get(id=id)
         task.is_delete = True
+        print(task.is_delete)
         task.save()    
 
     return redirect('home')
