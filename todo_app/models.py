@@ -1,6 +1,12 @@
 from django.db import models
 # Create your models here.
 
+class TaskManager(models.Manager):
+
+    def get_queryset(self):
+        return super().get_queryset().filter(is_delete=False)
+
+
 class Task(models.Model):
     PRIORITY = [
         (0, "Null"),
@@ -20,6 +26,9 @@ class Task(models.Model):
     status = models.BooleanField(choices=COMPLETION_CHOICES, default=False)
     is_delete = models.BooleanField(default=False)
     order = models.PositiveIntegerField(default=0)
+
+    objects = TaskManager()
+    admin_objects = models.Manager()    
 
     def __str__(self):
 
