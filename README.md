@@ -2,10 +2,11 @@
 
 ### A ToDo List App Based on Python's Django Framework
 ## Technologies Used
-1. **Django**
-2. **HTML**
-3. **Bootstrap**
 
+![Alt text](todo_app/static/Logos/django-logo-negative.png)
+
+![Alt text](todo_app/static/Logos/5847f5bdcef1014c0b5e489c.png)
+![Alt text](todo_app/static/Logos/pngegg.png)
 ## Build Guide
 
 1. Clone the repository.
