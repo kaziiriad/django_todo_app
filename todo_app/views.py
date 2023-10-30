@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.http import JsonResponse
 from .models import Task
 from django.db.models import F
+from .forms import TaskForm
 
 # Create your views here.
 
@@ -18,20 +20,16 @@ def create(request):
 
     if request.method == 'POST':
     
-        title = request.POST['title']
-        description = request.POST['description']
-        priority = request.POST.get('priority')
+        form = TaskForm(request.POST)
 
-        task = Task(
-            title = title,
-            description = description,
-            priority = priority
-        )
-        task.save()
+        if form.is_valid():
+            form.save()
 
-        return redirect('home')
+        return redirect(reverse('home'))
 
-    return render(request, 'todo_app/create.html')
+    form = TaskForm()
+
+    return render(request, 'todo_app/create.html', {"form" : form})
 
 def view_tasks(request, id):
 

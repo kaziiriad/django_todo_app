@@ -24,6 +24,7 @@ class Task(models.Model):
     priority = models.IntegerField(choices=PRIORITY, default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField(choices=COMPLETION_CHOICES, default=False)
+    deadline = models.DateTimeField(blank=True, null=True)
     is_delete = models.BooleanField(default=False)
 
     objects = TaskManager()
