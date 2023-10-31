@@ -14,7 +14,7 @@ def index(request):
 
     context = {'queryset': queryset}
 
-    return render(request, 'todo_app/index.html', context)
+    return render(request, 'todo_app/home.html', context)
 
 def create(request):
 
@@ -47,7 +47,7 @@ def update_task(request, id):
         task.status = True  # Toggle the status
         task.save()
 
-    return redirect('home')
+    return redirect(reverse('home'))
 
 def delete_task(request, id):
     

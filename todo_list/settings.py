@@ -48,7 +48,8 @@ INSTALLED_APPS = [
 ]
 
 EXTERNAL_APPS = [
-    'todo_app'
+    'todo_app',
+    'checklist_app'
 ]
 
 INSTALLED_APPS += EXTERNAL_APPS
@@ -68,7 +69,9 @@ ROOT_URLCONF = 'todo_list.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -5,4 +5,8 @@ class TaskForm(forms.ModelForm):
 
     class Meta:
         model = Task
-        exclude = ['status', 'is_delete']
+        fields = ['title', 'description', 'priority', 'deadline']
+
+    widgets = {
+        'deadline' : forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+    }
